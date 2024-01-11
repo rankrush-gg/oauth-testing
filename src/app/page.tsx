@@ -6,21 +6,25 @@ const urls = {
   chess: [
     {
       title: "Player Profile",
-      url: "https://api.chess.com/pub/player/{{input_data}}",
+      url: "https://api.chess.com/pub/player/{{user_name}}",
+      testData: ["muskyjobs", "sitontoilettime"],
     },
     {
-      title: "Player Stats2",
-      url: "https://api.chess.com/pub/player/{{input_data}}",
-    },
-    {
-      title: "Player Stats3",
-      url: "https://api.chess.com/pub/player/{{input_data}}",
+      title: "Player Stats",
+      url: "https://api.chess.com/pub/player/{{user_name}}/stats",
+      testData: ["muskyjobs", "sitontoilettime"],
     },
   ],
   instagram: [
     {
       title: "Account Metrics",
-      url: "https://graph.facebook.com/{{input_data}}/insights?metric=impressions,reach,profile_views&period=lifetime",
+      url: "https://graph.facebook.com/{{user_id}}/insights?metric=impressions,reach,profile_views",
+      testData: ["17841406338772957", "17841406338772957"],
+    },
+    {
+      title: "Media Metrics",
+      url: "https://graph.facebook.com/{{media_id}}/insights?metric=engagement,impressions,reach",
+      testData: ["17841406338772957", "17841406338772957"],
     },
   ],
 };
@@ -39,12 +43,22 @@ export default function Home() {
         </TabsList>
         <TabsContent value="chess" className="space-y-4">
           {urls.chess.map((url) => (
-            <ApiCard key={url.title} title={url.title} templateUrl={url.url} />
+            <ApiCard
+              key={url.title}
+              title={url.title}
+              templateUrl={url.url}
+              testData={url.testData}
+            />
           ))}
         </TabsContent>
         <TabsContent value="instagram" className="space-y-4">
           {urls.instagram.map((url) => (
-            <ApiCard key={url.title} title={url.title} templateUrl={url.url} />
+            <ApiCard
+              key={url.title}
+              title={url.title}
+              templateUrl={url.url}
+              testData={url.testData}
+            />
           ))}
         </TabsContent>
       </Tabs>
