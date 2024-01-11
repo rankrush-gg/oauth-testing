@@ -1,6 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ApiCard from "@/components/ApiCard";
 import { ModeToggle } from "@/components/theme-toggle";
+import OauthButton from "@/components/OauthButton";
 
 const urls = {
   chess: [
@@ -29,6 +30,13 @@ const urls = {
   ],
 };
 
+// cuz fuckin needs to be https
+// ngrok http --domain=warthog-lucky-gradually.ngrok-free.app 3000
+const redirect_uri = "https://warthog-lucky-gradually.ngrok-free.app";
+const instagramAuthUrl = `https://api.instagram.com/oauth/authorize?client_id=685636683726472&redirect_uri=${redirect_uri}/&scope=user_profile,user_media&response_type=code`;
+
+const chessAuthUrl = "";
+
 export default function Home() {
   return (
     <main className="flex-1 space-y-4 p-16 pt-12">
@@ -42,6 +50,7 @@ export default function Home() {
           <TabsTrigger value="instagram">instagram</TabsTrigger>
         </TabsList>
         <TabsContent value="chess" className="space-y-4">
+          <OauthButton text="Chess.com" url={chessAuthUrl} />
           {urls.chess.map((url) => (
             <ApiCard
               key={url.title}
@@ -52,6 +61,7 @@ export default function Home() {
           ))}
         </TabsContent>
         <TabsContent value="instagram" className="space-y-4">
+          <OauthButton text="Instagram" url={instagramAuthUrl} />
           {urls.instagram.map((url) => (
             <ApiCard
               key={url.title}
