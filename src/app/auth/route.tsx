@@ -11,8 +11,8 @@ export async function GET(request: NextRequest) {
   }
 
   const params = new URLSearchParams();
-  params.append('client_id', '685636683726472');
-  params.append('client_secret', '33e7c5e33963fdf6011619f49084e438');
+  params.append('client_id', '923456155775911');
+  params.append('client_secret', '531cd3ae39ea747219332b14b597f5e3');
   params.append('grant_type', 'authorization_code');
   params.append('redirect_uri', 'https://warthog-lucky-gradually.ngrok-free.app/auth/');
   params.append('code', code);
@@ -31,7 +31,6 @@ export async function GET(request: NextRequest) {
       return new Response(JSON.stringify(data, null, 2), { status: 400 });
     }
     
-    console.log('got auth code', data)
     // Send the access token to the frontend
     // for when in production probably, but rn localhost https issues
     // const res = NextResponse.redirect(new URL(request.url).origin, { status: 302 });

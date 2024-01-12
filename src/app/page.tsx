@@ -18,14 +18,29 @@ const urls = {
   ],
   instagram: [
     {
-      title: "Account Metrics",
-      url: "https://graph.facebook.com/{{user_id}}/insights?metric=impressions,reach,profile_views",
-      testData: ["17841406338772957", "17841406338772957"],
+      title: "User Profile",
+      url: "https://graph.instagram.com/me?fields={{fields}}",
+      testData: ["id,username"],
     },
     {
-      title: "Media Metrics",
-      url: "https://graph.facebook.com/{{media_id}}/insights?metric=engagement,impressions,reach",
-      testData: ["17841406338772957", "17841406338772957"],
+      title: "User Media",
+      url: "https://graph.instagram.com/me/media?fields={{fields}}",
+      testData: ["id,caption"],
+    },
+    {
+      title: "Media Data",
+      url: "https://graph.instagram.com/{{media_id}}?fields=id,media_type,media_url,username,timestamp",
+      testData: ["18175957831279326", "18066267463348805", "17968750514252981"],
+    },
+    {
+      title: "Account Metrics (not avliable with basic api)",
+      url: "https://graph.facebook.com/{{user_id}}/insights?metric=impressions,reach,profile_views&period=lifetime",
+      testData: ["6856909077765396"],
+    },
+    {
+      title: "Media Metrics (not avliable with basic api)",
+      url: "https://graph.facebook.com/{{media_id}}/insights?metric=engagement,impressions,reach&period=lifetime",
+      testData: ["6856909077765396"],
     },
   ],
 };
@@ -33,7 +48,7 @@ const urls = {
 // cuz fuckin needs to be https
 // ngrok http --domain=warthog-lucky-gradually.ngrok-free.app 3000
 const redirect_uri = "https://warthog-lucky-gradually.ngrok-free.app/auth/";
-const instagramAuthUrl = `https://api.instagram.com/oauth/authorize?client_id=685636683726472&redirect_uri=${redirect_uri}&scope=user_profile,user_media&response_type=code`;
+const instagramAuthUrl = `https://api.instagram.com/oauth/authorize?client_id=923456155775911&redirect_uri=${redirect_uri}&scope=user_profile,user_media&response_type=code`;
 
 const chessAuthUrl = "";
 

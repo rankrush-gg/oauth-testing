@@ -25,10 +25,30 @@ type Props = {
 
 function ApiCard({ title, templateUrl, testData }: Props) {
   const [value, setValue] = useState("");
-  const [data, setData] = useState("hello world");
+  const [data, setData] = useState("");
 
   // note: prolly back security for server to use unsantized user input
-  const handleClick = () => {};
+  const handleClick = async () => {
+    if (!value) return;
+
+    try {
+      const response = await fetch("/api", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          endpoint: `${templateParts[0]}${value}${templateParts[1]}`,
+        }),
+      });
+
+      const responseData = await response.json();
+      setData(JSON.stringify(responseData, null, 2));
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setData("Error fetching data");
+    }
+  };
 
   const handleChange = (e: any) => {
     setValue(e.target.value);
