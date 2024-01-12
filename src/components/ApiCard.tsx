@@ -27,6 +27,7 @@ function ApiCard({ title, templateUrl, testData }: Props) {
   const [value, setValue] = useState("");
   const [data, setData] = useState("hello world");
 
+  // note: prolly back security for server to use unsantized user input
   const handleClick = () => {};
 
   const handleChange = (e: any) => {
@@ -81,6 +82,7 @@ function ApiCard({ title, templateUrl, testData }: Props) {
             value={value}
             onChange={handleChange}
           />
+          {/* TODO: disable butotn if no token */}
           <Button onClick={handleClick}>
             Send <ChevronRight className="ml-2 h-4 w-4" />
           </Button>

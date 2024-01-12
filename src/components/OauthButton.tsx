@@ -9,7 +9,7 @@ type Props = {
 
 const OauthButton = ({ text, url }: Props) => {
   const handleOAuthLogin = () => {
-    window.open(url, "_blank"); // Opens the OAuth URL in a new tab
+    window.open(url, "_self"); // Opens the OAuth URL in a new tab
   };
 
   return <Button onClick={handleOAuthLogin}>{text} Login</Button>;
