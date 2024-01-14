@@ -1,44 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# OAuth Testing App 🚀
 
-## Getting Started
+## 🎯 Overview
 
-First, run the development server:
+Built by [RankRush.gg](https://rankrush.gg) during the Starknet Fellowship, Cohort 1.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+This app is a playground for learning OAuth flows. It's designed to verify chess.com accounts and interface with Cairo contracts, proving user reputations on-chain. Currently featuring Instagram API integration, this tool is a stepping stone towards seamless digital identity verification. Crafted with Bun and Next.js, it's our first foray into connecting gaming prowess to the blockchain realm. 🎮⛓️
+
+## 🌟 Features
+
+- OAuth Login
+- Account verification for instagram.com
+- Instagram API integration for fetching user and media insights
+- Local server tunneling via ngrok for development and testing
+
+## 🛠 Installation
+
+You'll need a couple of things:
+
+- Bun, your speedy JavaScript buddy
+- An Instagram dev account for those secret keys
+- An ngrok account to make your local server famous
+
+### 🗝️ Setup API Keys
+
+Follow the Instagram [documentation](https://developers.facebook.com/docs/instagram-basic-display-api/getting-started) to setup your app and get your keys. Also, it's recommended that your redirect_uri ends with /auth.
+
+Rename `.env.example` to `.env.local` and fill it with your details:
+
+```plaintext
+CLIENT_ID=your-instagram-client-id
+CLIENT_SECRET=yout-instagram-client-secret
+REDIRECT_URI=your-ngrok-redirect-uri
+BASE_URL=your-ngrok-base-url
+```
+
+### 🦾 Install & Run
+
+With Bun:
+
+```sh
+bun install
+```
+
+And then let it run:
+
+```sh
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚧 Setup Ngrok
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This is needed to work on localhost with Instagram's redirect_uri. This is because localhost does not run https. Ngrok will create a tunnel to your local server and provide you with a https url.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Sign up at [ngrok's website](https://ngrok.com/).
+2. Download and connect your account.
+3. Start your tunnel:
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-## Ngrok Testing Setup
-
-This is for local testing of Oauth, needed for redirect uri: https://warthog-lucky-gradually.ngrok-free.app/auth
-
+```sh
+ngrok http --domain=<yourdomain.ngrok-free.app> 3000
 ```
-ngrok http --domain=warthog-lucky-gradually.ngrok-free.app 3000
-```
+
+## 🚗💨 Test Drive Instagram
+
+After adding a user from the API portal, make sure you accept dev invite in your instagram Settings>Website Permissions>TesterInvites. Then set up, log in, and marvel at your Instagram insights!
+
+## 📷 Screenshots
+
+Check these out to see what's in store:
+
+## Contribute 🌟
+
+Got a bright idea? Jump in and share!
