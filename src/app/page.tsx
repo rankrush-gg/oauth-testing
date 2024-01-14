@@ -47,8 +47,8 @@ const urls = {
 
 // cuz fuckin needs to be https
 // ngrok http --domain=warthog-lucky-gradually.ngrok-free.app 3000
-const redirect_uri = "https://warthog-lucky-gradually.ngrok-free.app/auth/";
-const instagramAuthUrl = `https://api.instagram.com/oauth/authorize?client_id=923456155775911&redirect_uri=${redirect_uri}&scope=user_profile,user_media&response_type=code`;
+const redirect_uri = process.env.REDIRECT_URI;
+const instagramAuthUrl = `https://api.instagram.com/oauth/authorize?client_id=${process.env.CLIENT_ID}&redirect_uri=${redirect_uri}&scope=user_profile,user_media&response_type=code`;
 
 const chessAuthUrl = "";
 

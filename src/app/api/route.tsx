@@ -4,6 +4,7 @@ export async function POST(request: NextRequest) {
     // input: access token, endpoint
     // make request with token at endpoint
     // send data back to frontend
+    // in the future send data to Cairo here
     try {
 
     const {endpoint} = await request.json()

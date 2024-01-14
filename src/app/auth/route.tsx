@@ -11,10 +11,10 @@ export async function GET(request: NextRequest) {
   }
 
   const params = new URLSearchParams();
-  params.append('client_id', '923456155775911');
-  params.append('client_secret', '531cd3ae39ea747219332b14b597f5e3');
+  params.append('client_id', process.env.CLIENT_ID);
+  params.append('client_secret', process.env.CLIENT_SECRET);
   params.append('grant_type', 'authorization_code');
-  params.append('redirect_uri', 'https://warthog-lucky-gradually.ngrok-free.app/auth/');
+  params.append('redirect_uri', process.env.REDIRECT_URI);
   params.append('code', code);
 
   try {
@@ -34,7 +34,7 @@ export async function GET(request: NextRequest) {
     // Send the access token to the frontend
     // for when in production probably, but rn localhost https issues
     // const res = NextResponse.redirect(new URL(request.url).origin, { status: 302 });
-    const res = NextResponse.redirect('https://warthog-lucky-gradually.ngrok-free.app/');
+    const res = NextResponse.redirect(process.env.BASE_URL);
     res.cookies.set('access_token', data.access_token, {
       httpOnly: true,
       sameSite: 'lax',
